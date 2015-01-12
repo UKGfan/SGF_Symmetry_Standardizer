@@ -1,0 +1,162 @@
+// Parser for SGF files for playing GO
+// Copyright Stuart Yeates 2006-2008
+//
+// This file contains java 5 templates, so a modern version of 
+// javacc is required and a modern version of java to compile 
+// the output.
+
+// On windows the commands to running this file on the commandline 
+// looks like:
+//
+// cd "C:\Documents and Settings\stuart\workspace\sufgo\sufgo\SGF"
+// ..\..\..\..\javacc-4.0\bin\javacc SGF.jj
+// 
+// and on linux:
+//
+// syeates@syeates-laptop:~/workspace/mii/sufgo/SGF$ /usr/lib/jvm/java-1.5.0-sun/bin/java -classpath /home/syeates/Desktop/javacc-4.0/bin/lib/javacc.jar javacc SGF.jj
+//
+
+
+
+		
+
+options {
+  LOOKAHEAD = 1;
+  CHOICE_AMBIGUITY_CHECK = 2;
+  OTHER_AMBIGUITY_CHECK = 1;
+  STATIC = false;
+  DEBUG_PARSER = false;
+  DEBUG_LOOKAHEAD = false;
+  DEBUG_TOKEN_MANAGER =false;
+  ERROR_REPORTING = true;
+  JAVA_UNICODE_ESCAPE = false;
+  UNICODE_INPUT = true;
+  IGNORE_CASE = true;
+  USER_TOKEN_MANAGER = false;
+  USER_CHAR_STREAM = false;
+  BUILD_PARSER = true;
+  BUILD_TOKEN_MANAGER = true;
+  SANITY_CHECK = true;
+  FORCE_LA_CHECK = true;
+}
+
+PARSER_BEGIN(SGF)
+ package jgogears.SGF;
+ import java.util.*;
+ import jgogears.*;
+/**
+* The main JavaCC parser class
+*/
+public class SGF {
+ 
+}
+
+PARSER_END(SGF)
+
+SKIP :
+{
+  " "
+| "\t"
+| "\n"
+| "\r"
+}
+
+
+TOKEN :
+{
+  <SEMI: ";">
+| <OPENR: "(">
+| <CLOSER: ")">
+| <NAME:  ( ["A"-"Z"]) +  >
+| <VALUE:   "[" ( ( ( "\\" [" "-"~"] ) | ~[ "]", "\\" ]  ) *  ) "]"  >
+//| <VALUE:   "[" ( [" "-"\\", "^"-"~"]  ) * "]" >
+}
+
+Vector<SGFGameTree> collection() :
+ { 
+    SGFGameTree gameTree = null;
+    Vector<SGFGameTree> games = new Vector<SGFGameTree>(); 
+ }
+ {
+   (
+    gameTree = gameTree()
+    { games.add(gameTree); }
+    ) +
+    {return games;}
+ }
+ 
+ SGFGameTree gameTree() :
+ {
+  SGFSequence sequence = null;
+  SGFGameTree child = null;
+  SGFGameTree result = new SGFGameTree();
+ }
+ {
+   <OPENR> 
+  
+     sequence = sequence()	
+     {result.sequence = sequence;}	  
+     (
+       child = gameTree()
+       { result.gameTrees.add(child); }
+      ) *
+  
+   <CLOSER> 
+   {return result;}
+ }
+ 
+ SGFSequence sequence () :
+ {
+ SGFSequence result = new SGFSequence();
+ SGFNode node = null;
+ }
+ {
+   (
+     node = node()
+     {result.add(node);}
+    ) +
+    {return result;}
+ }
+ SGFNode node() :
+ {
+   SGFNode result = new SGFNode();
+   SGFProperty prop = null;
+ }
+ {
+  <SEMI>
+  (
+      prop = prop()
+      {result.properties.add(prop);}
+  ) *
+  {return result;}
+ }
+ 
+ SGFProperty prop() :
+ {
+  Token name = null;
+  Token value = null;
+  SGFProperty result = new SGFProperty();
+ }
+ {
+   name=<NAME>
+   {result.setIdentifier(name.image);}
+   (
+      value =<VALUE>
+      {result.getValues().add(value.image);}
+    ) +
+ 	{return result;	}
+ }
+ 
+		/**
+
+This file contains java 5 templates, so a modern version of javacc is required
+
+cd "C:\Documents and Settings\stuart\workspace\sufgo\sufgo\SGF"
+..\..\..\..\javacc-4.0\bin\javacc SGF.jj
+
+syeates@syeates-laptop:~/workspace/mii/sufgo/SGF$ /usr/lib/jvm/java-1.5.0-sun/bin/java -classpath /home/syeates/Desktop/javacc-4.0/bin/lib/javacc.jar javacc SGF.jj
+
+
+
+		*/
+		

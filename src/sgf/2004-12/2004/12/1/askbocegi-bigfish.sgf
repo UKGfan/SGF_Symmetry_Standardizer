@@ -1,0 +1,38 @@
+(;GM[1]FF[4]CA[UTF-8]
+RU[Japanese]SZ[9]KM[6.50]TM[1650]OT[5x30 byo-yomi]
+PW[askbocegi]PB[bigfish]DT[2004-12-01]PC[The Kiseido Go Server (KGS) at http://kgs.kiseido.com/]RE[W+Resign]
+;B[gc]CR[gc]BL[1793.981]C[askbocegi [?\]: hi
+]
+;W[ee]CR[ee]WL[1796.949]
+;B[eb]CR[eb]BL[1787.339]
+;W[dc]CR[dc]WL[1786.592]
+;B[ec]CR[ec]BL[1779.838]
+;W[ed]CR[ed]WL[1782.342]
+;B[fb]CR[fb]BL[1775.261]C[bigfish [?\]: saly
+]
+;W[fd]CR[fd]WL[1738.293]C[askbocegi [?\]: where are you from?
+]
+;B[dd]CR[dd]BL[1763.977]
+;W[de]CR[de]WL[1733.884]
+;B[cc]CR[cc]BL[1759.667]
+;W[cd]CR[cd]WL[1732.152]C[bigfish [?\]: Im from switzerland
+askbocegi [?\]: good i am from turkey
+]
+;B[hb]CR[hb]BL[1715.088]
+;W[db]CR[db]WL[1707.278]C[bigfish [?\]: wat you name
+]
+;B[ga]CR[ga]BL[1703.534]
+;W[fc]CR[fc]WL[1701.771]
+;B[gd]CR[gd]BL[1699.335]C[bigfish [?\]: wat is you name
+]
+;W[ge]CR[ge]WL[1662.570]C[askbocegi [?\]: cihangir
+]
+;B[fe]CR[fe]BL[1690.863]C[askbocegi [?\]: u?
+]
+;W[ff]CR[ff]WL[1659.164]C[bigfish [?\]: domenic
+askbocegi [?\]: what is your job?
+]
+;B[ef]CR[ef]BL[1667.047]
+;W[eg]CR[eg]WL[1655.609]C[bigfish [?\]: compurman
+askbocegi [?\]: good
+])

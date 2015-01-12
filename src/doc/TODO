@@ -1,0 +1,53 @@
+TODO
+====
+
+Short Term
+==========
+* trace lack of symmetry in testTrainedModelEmptyBoard
+* work on ASCIIToBoard -> BoardI round triping
+* update javacc generated files in svn (eclipse javacc plugin is preventing this happening via eclipse)
+* commandline program to play jgogears against gnugo
+* commandline program to guess moves from real games
+* decided whether to dual licence under the Apache 2 license
+* find a decent training corpus
+
+SGF Support
+===========
+* parse tt in SGF files
+* work out the differences between SGF 3 and 4
+* wider range of test inputs
+* find a better set of tests
+
+Board Support
+=============
+* 3-4 different types of KO detection
+* finish CachingKoRule
+
+General
+=======
+* Decent ASCII board output
+* Parse GnuGo board output
+  * direct
+  * cut and paste
+* Better test coverage
+* Silent test coverage
+* improve GTP support
+* SGF saving (use SGFC for validation)
+* generate and quality-check the javadoc
+
+Speed improvements, test and improve
+====================================
+* attribute parsing
+* game structure creation
+
+
+DONE
+* implement abstract KO detection 
+* fix java compiler style warnings (javadoc etc)
+* tests for ko rules
+* separate the Model/Node data structures from the algorithms
+* better tests of the Board implementations
+* jgogears.engine.Engine now up and running
+* make moves a little more random. They're meant to be random at the moment, but apparently aren't...
+* change training to only train on winning moves rather than all moves
+

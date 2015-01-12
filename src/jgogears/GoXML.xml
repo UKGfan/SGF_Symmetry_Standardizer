@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<go:game>
+ <go:header>
+ <!-- the ruleset we're playing under
+      name is a string,  the common name of the ruleset
+      uri is a uri, pointing to a complete applicative, interpreative examplation of the rules
+      players is an integer, the number of players in the game (typically 2 or 4)
+  -->
+ 	<go:rules name="kgs" url="http://www.example.com/go/rules/kgs.rules.html" players="2"/>
+	<!-- the handicap in operation for this game. 
+	count is an integer, indicating the number of black stones placed on the 
+	          board prior to the start of play
+	 -->
+ 	<go:handicap count=""/>
+ 	<!-- the timing scheme in operation  -->
+ 	<go:timing name="" url=""/>
+ 	<!-- a game archive that game resides in, or may reside in  -->
+ 	<go:gameArchive url=""/>
+ 	<!-- a complete list of the foaf:entities refered to in this file. Entities can be human or comuter
+ 	palyers, comment -->
+ 	<go:entities count="">
+ 		<foaf:Person id="black">
+ 		 <foaf:name></foaf:name>
+		 <go:rank schemeName="" schemeUrl="" playerUrl="" confidence="" rank="" textual=""/>
+ 		</foaf:Person>
+ 	</go:entities>
+ 	<!-- The score at this point in the game
+ 	confidence is a string representing the confidence on the score one of "complete" (optimal play)
+ 	              "moderate" "guess" 
+ 	sekis is either "true" or "false" depending on whether the scorer understands sekis             
+ 	 -->
+ 	<go:score confidence="complete" sekis="true">B+5</go:score>
+ </go:header>
+ <go:body>
+ <!-- a move 
+ x is the row, using zero indexed integers
+ y is the column, using zero indexed integers
+ colour is the colour of the move
+ player is a reference to an entity who played this move -->
+ <go:move id="" x="5" y="3" colour="go:black" player="black"/>
+ <!-- board displays the current state of the board
+   type is a string, either "ascii", "unicode", "detailed" or "scored"
+   an "ascii" board is an ascii art representation of the board using 
+   a "unicode" board is a unicode art representation of the board and should contain an xml:lang 
+       attribute indicating which language the board is labbeled in. en, jp, cn and kr are likely
+       candidates.
+   there are no restrictions on whether traditional labelling (omitting the 'i') should be used, but 
+       applications are encouraged to be consistent.
+   a "detailed" board is a list of vertexes and their respective states. Vertexes which formerly held
+       which were later captured should be listed as "empty"
+   a "scored" board contains the state of every vextex on the baord and whether the group is alive or 
+       dead.
+   -->
+ 
+ <go:board type="ascii"> .... </go:board>
+ <go:board type="detailed">
+   <go:vertex x="6" y="4" state="go:empty"/>
+   <go:vertex x="5" y="4" state="go:white"/>
+   <go:vertex x="4" y="4" state="go:black"/>
+   <go:vertex x="3" y="4" state="go:ko"/>
+ </go:board>
+ <go:anntoation comment= "this was a good move" player="" >
+ 	<go:label type="triangle">
+ 	  <go:vertex x="6" y="4"/>	
+ 	</go:label>
+ 	<go:score confidence="scored">B+5</go:score>
+ </go:anntoation>
+ <go:board type="scored">
+   <go:vertex x="6" y="4" state="go:empty"/>
+   <go:vertex x="5" y="4" state="go:white"/>
+   <go:vertex x="4" y="4" state="go:black"/>
+   <go:vertex x="3" y="4" state="go:ko"/>
+   <go:vertex x="2" y="4" state="go:blackterritory"/>
+   <go:vertex x="2" y="4" state="go:whiteterritory"/>
+   <go:vertex x="2" y="4" state="go:blacklive"/>
+   <go:vertex x="2" y="4" state="go:blackdead"/>
+   <go:vertex x="2" y="4" state="go:blackseki"/>
+   <go:vertex x="2" y="4" state="go:emptyseki"/>   
+ </go:board>
+ </go:body>
+</go:game>
+
